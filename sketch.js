@@ -6,6 +6,7 @@ var aliengrp,lasergrp
 var score=0
 var gamestate="play"
 var edges
+var potato
 function preload(){
 bgimg=loadImage('assets/black_bg.jpeg')
 ssimg=loadImage('assets/ss2.png')
@@ -26,6 +27,8 @@ function setup(){
  edges=createEdgeSprites()
  aliengrp=new Group()
  lasergrp=new Group()
+ potato=createSprite(200,400,15,800)
+ potato.visible=false
  
 }
 
@@ -34,8 +37,9 @@ background(bgimg)
 drawSprites()
 fill(255)
 textSize(30)
-text(' S C O R E - '+score,50,50)
-
+text(' S C O R E - '+Math.round(score),50,50)
+textSize(20)
+text('coded by Shruti',1200,750)
 if(gamestate==='play'){
     if(keyDown(UP_ARROW)){
         ss.y-=8
@@ -51,10 +55,14 @@ if(gamestate==='play'){
     }
 
 lasergrp.isTouching(aliengrp,destroyalien)
+if(aliengrp.isTouching(potato)){
+score-=0.1
+}
 
 if(aliengrp.isTouching(ss)){
     gamestate='stop'
 }
+
 
 }
 
@@ -140,4 +148,6 @@ lasergrp.destroyEach()
 score+=10
 
 }
+
+
 
