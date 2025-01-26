@@ -40,6 +40,7 @@ textSize(30)
 text(' S C O R E - '+Math.round(score),50,50)
 textSize(20)
 text('coded by Shruti',1200,750)
+text('move ship using up and down arrow keys & fire lasers using spacebar to destroy alien ship',500,50)
 if(gamestate==='play'){
     if(keyDown(UP_ARROW)){
         ss.y-=8
